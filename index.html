@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled YouTube Embedding Labwork</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-css-reset/dist/reset.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+        window.youtube_img_load_check = function (e) {
+            var thumbnail = ["maxresdefault", "mqdefault", "sddefault", "hqdefault", "default"];
+            var url = e.getAttribute("src");
+            if (e.naturalWidth === 120 && e.naturalHeight === 90) {
+                for (var i = 0, len = thumbnail.length - 1; i < len; i++) {
+                    if (url.indexOf(thumbnail[i]) > 0) {
+                        e.setAttribute("src", url.replace(thumbnail[i], thumbnail[i + 1]));
+                        break;
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="content">
+        <header>
+            <h1>Styled&nbsp;YouTube Embedding&nbsp;Labwork</h1>
+            <noscript>
+                <p>This page requires JavaScript to function correctly.</p>
+            </noscript>
+            <p>The page layout is responsive.</p>
+        </header>
+        <section>
+            <h2>High&nbsp;resolution video&nbsp;example</h2>
+            <p>It loads maxresdefault.jpg successfully.</p>
+            <div class="youtube-video">
+                <div class="youtube-video__aspect">
+                    <div class="youtube-video__wrapper">
+                        <img class="youtube-video__poster"
+                            src="https://img.youtube.com/vi/jIHvgUAW5vE/maxresdefault.jpg"
+                            onload="window.youtube_img_load_check(this)" alt="1080p resolution youtube-video"
+                            loading="lazy" />
+                        <div class="youtube-video__play-icon" data-link="https://www.youtube.com/embed/jIHvgUAW5vE">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Low&nbsp;resolution video&nbsp;example</h2>
+            <p>The maxresdefault.jpg fails to load and switches to mqdefault.jpg which loads successfully.</p>
+            <div class="youtube-video">
+                <div class="youtube-video__aspect">
+                    <div class="youtube-video__wrapper">
+                        <img class="youtube-video__poster"
+                            src="https://img.youtube.com/vi/chPdcSRI4FU/maxresdefault.jpg"
+                            onload="window.youtube_img_load_check(this)" alt="144p resolution youtube-video"
+                            loading="lazy" />
+                        <div class="youtube-video__play-icon" data-link="https://www.youtube.com/embed/chPdcSRI4FU">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>4:3&nbsp;aspect&nbsp;ratio video&nbsp;example</h2>
+            <div class="youtube-video">
+                <div class="youtube-video__aspect">
+                    <div class="youtube-video__wrapper">
+                        <img class="youtube-video__poster"
+                            src="https://img.youtube.com/vi/mM5_T-F1Yn4/maxresdefault.jpg"
+                            onload="window.youtube_img_load_check(this)" alt="4:3 aspect ratio youtube-video"
+                            loading="lazy" />
+                        <div class="youtube-video__play-icon" data-link="https://www.youtube.com/embed/mM5_T-F1Yn4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="attributions">
+                Play icon from&nbsp;<a href="https://www.flaticon.com/" title="Flaticon"
+                    rel="noopener noreferrer nofollow" target="_blank">www.flaticon.com</a>
+                &bull;
+                Loading indicator from&nbsp;<a href="https://loading.io/" title="LOADING.IO"
+                    rel="noopener noreferrer nofollow" target="_blank">loading.io</a>
+            </div>
+        </footer>
+
+    </div>
+    <script src="scripts.js"></script>
+</body>
+
+</html>
